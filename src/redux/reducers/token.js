@@ -10,10 +10,7 @@ const token = (state = INITIAL_STATE, action) => {
       ...state,
     };
   case RECEIVE_TOKEN_SUCCESS:
-    return {
-      ...state,
-      token: action.token,
-    };
+    return (action.token);
   case RECEIVE_TOKEN_FAILURE:
     return {
       ...state,

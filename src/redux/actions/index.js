@@ -22,7 +22,7 @@ export const fetchTokenThunk = () => async (dispatch) => {
   dispatch(requestToken());
   try {
     const json = await fetchAPI(URL_TOKEN);
-    dispatch(receiveTokenSuccess(json));
+    dispatch(receiveTokenSuccess(json.token));
   } catch (error) {
     dispatch(receiveTokenFailure());
   }
