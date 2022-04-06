@@ -1,8 +1,13 @@
 import fetchAPI from '../../services/fetchApi';
+import store from '../store';
+
 import {
   RECEIVE_TOKEN_SUCCESS,
   RECEIVE_TOKEN_FAILURE,
   REQUEST_TOKEN,
+  RECEIVE_QUIZ_SUCCESS,
+  RECEIVE_QUIZ_FAILURE,
+  REQUEST_QUIZ,
   USER_LOGIN_DATA,
 } from './actionTypes';
 
@@ -20,13 +25,29 @@ export const receiveTokenFailure = (error) => ({
   error,
 });
 
+export const requestQuiz = () => ({
+  type: REQUEST_QUIZ,
+});
+
+export const receiveQuizSuccess = (quiz) => ({
+  type: RECEIVE_QUIZ_SUCCESS,
+  quiz,
+});
+
+export const receiveQuizFailure = (error) => ({
+  type: RECEIVE_QUIZ_FAILURE,
+  error,
+});
+
 export const userLoginData = (name, email) => ({
   type: USER_LOGIN_DATA,
   email,
   name,
 });
 
+const { token } = store.getState();
 const URL_TOKEN = 'https://opentdb.com/api_token.php?command=request';
+const URL_QUIZ = `https://opentdb.com/api.php?amount=5&token=${token}`;
 
 export const fetchTokenThunk = () => async (dispatch) => {
   dispatch(requestToken());
@@ -35,5 +56,15 @@ export const fetchTokenThunk = () => async (dispatch) => {
     dispatch(receiveTokenSuccess(json.token));
   } catch (error) {
     dispatch(receiveTokenFailure());
+  }
+};
+
+export const fetchQuizThunk = () => async (dispatch) => {
+  dispatch(requestQuiz());
+  try {
+    const json = await fetchAPI(URL_QUIZ);
+    dispatch(receiveQuizSuccess(json));
+  } catch (error) {
+    dispatch(receiveQuizFailure());
   }
 };
