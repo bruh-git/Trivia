@@ -1,3 +1,4 @@
+// Iniciando a branch da tela de jogo
 import { RECEIVE_TOKEN_FAILURE, RECEIVE_TOKEN_SUCCESS,
   REQUEST_TOKEN } from '../actions/actionTypes';
 
