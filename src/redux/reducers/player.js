@@ -1,4 +1,4 @@
-import { REQUEST_QUIZ } from '../actions/actionTypes';
+import { USER_LOGIN_DATA } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   name: '',
@@ -10,10 +10,11 @@ const INITIAL_STATE = {
 
 const player = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case REQUEST_QUIZ:
+  case USER_LOGIN_DATA:
     return {
       ...state,
-
+      name: action.name,
+      gravatarEmail: action.email,
     };
   default:
     return state;
