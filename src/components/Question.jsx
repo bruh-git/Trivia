@@ -1,10 +1,10 @@
 import React from 'react';
 
 class Question extends React.Component {
-  render() {  
+  render() { 
     const { questionObject } = this.props;
     const { category, type, question, correct_answer, incorrect_answers} = questionObject;
-  
+
     return (
       <div>
         <p data-testid="question-category"> { category } </p>
