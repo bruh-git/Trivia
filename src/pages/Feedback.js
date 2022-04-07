@@ -7,12 +7,24 @@ const MIN_CORRECT_ANSWERS = 3;
 
 class Feedback extends Component {
   render() {
-    const { score } = this.props;
+    const { assertions, score } = this.props;
     return (
       <>
         <Header />
         <p data-testid="feedback-text">
           { score < MIN_CORRECT_ANSWERS ? 'Could be better...' : 'Well Done!' }
+        </p>
+        <p>
+          O seu placar final é de
+          {' '}
+          <strong data-testid="feedback-total-score">{score}</strong>
+        </p>
+        <p>
+          Você acertou
+          {' '}
+          <strong data-testid="feedback-total-question">{assertions}</strong>
+          {' '}
+          perguntas
         </p>
       </>
     );
@@ -20,6 +32,7 @@ class Feedback extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  assertions: state.player.assertions,
   score: state.player.score,
 });
 
@@ -29,6 +42,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Feedback.propTypes = {
+  assertions: PropTypes.number,
   score: PropTypes.number,
   // token: PropTypes.string,
   // results: PropTypes.arrayOf(PropTypes.object),
