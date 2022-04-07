@@ -30,6 +30,32 @@ class Game extends Component {
     } else { this.setState({ results: getQuiz.results }); }
   }
 
+  renderAnswers = () => {
+    const { index, results } = this.state;
+    const currentQuestion = results[index];
+    const { type } = currentQuestion;
+    const incorrectAnswers = currentQuestion.incorrect_answers.concat();
+    const correctAnswer = currentQuestion.correct_answer;
+    const maxLength = 4;
+    const minLength = 2;
+    const answerLength = type === 'multiple' ? maxLength : minLength;
+    const shuffledAnwers = incorrectAnswers.concat();
+    shuffledAnwers
+      .splice(Math.floor(Math.random() * answerLength), 0, correctAnswer);
+    return shuffledAnwers
+      .map((answer, id) => (
+        <button
+          data-testid={ answer === correctAnswer
+            ? 'correct-answer'
+            : `wrong-answer-${id}` }
+          type="button"
+          key={ id }
+        >
+          {answer}
+        </button>
+      ));
+  }
+
   render() {
     const { index, results } = this.state;
     const currentQuestion = results[index];
@@ -44,23 +70,7 @@ class Game extends Component {
               <p data-testid="question-category">{currentQuestion.category}</p>
               <h3 data-testid="question-text">{currentQuestion.question}</h3>
               <ul data-testid="answer-options">
-                <button
-                  type="button"
-                  data-testid="correct-answer"
-                >
-                  {currentQuestion.correct_answer}
-                </button>
-                {
-                  currentQuestion.incorrect_answers
-                    .map((answer, id) => (
-                      <button
-                        type="button"
-                        data-testid="wrong-answer"
-                        key={ id }
-                      >
-                        {answer}
-                      </button>))
-                }
+                { this.renderAnswers() }
               </ul>
             </div>)
         }
