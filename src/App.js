@@ -14,7 +14,7 @@ class App extends Component {
         <Route exact path="/" component={ Login } />
         <Route path="/game" component={ Game } />
         <Route path="/feedback" component={ Feedback } />
-        <Route path="/ranking " component={ Ranking } />
+        <Route path="/ranking" component={ Ranking } />
         <Route path="/config" component={ Config } />
       </Switch>
     );

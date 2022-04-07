@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Header from '../components/Header';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 
 const MIN_CORRECT_ANSWERS = 3;
 
@@ -35,6 +35,14 @@ class Feedback extends Component {
             Play Again
           </button>
         </Link>
+        <Link to="/ranking">
+          <button
+            data-testid="btn-ranking"
+            type="button"
+          >
+            Ranking
+          </button>
+        </Link>
       </>
     );
   }
@@ -45,16 +53,9 @@ const mapStateToProps = (state) => ({
   score: state.player.score,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  // setNewToken: (token) => dispatch(renewToken(token)),
-  // dispatchRequestQuiz: () => dispatch(fetchQuizThunk()),
-});
-
 Feedback.propTypes = {
   assertions: PropTypes.number,
   score: PropTypes.number,
-  // token: PropTypes.string,
-  // results: PropTypes.arrayOf(PropTypes.object),
 }.isRequired;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feedback);
+export default connect(mapStateToProps)(Feedback);
