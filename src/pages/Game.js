@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import { fetchQuizThunk, renewToken } from '../redux/actions';
 import fetchAPI from '../services/fetchApi';
+import Time from '../components/Time';
 
 class Game extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       index: 0,
@@ -32,6 +33,7 @@ class Game extends Component {
 
   renderAnswers = () => {
     const { index, results } = this.state;
+    const { time } = this.props;
     const currentQuestion = results[index];
     const { type } = currentQuestion;
     const incorrectAnswers = currentQuestion.incorrect_answers.concat();
@@ -49,6 +51,7 @@ class Game extends Component {
             ? 'correct-answer'
             : `wrong-answer-${id}` }
           type="button"
+          disabled={ time }
           key={ id }
         >
           {answer}
@@ -70,9 +73,11 @@ class Game extends Component {
               <p data-testid="question-category">{currentQuestion.category}</p>
               <h3 data-testid="question-text">{currentQuestion.question}</h3>
               <ul data-testid="answer-options">
+                <Time />
                 { this.renderAnswers() }
               </ul>
-            </div>)
+            </div>
+          )
         }
       </>
     );
@@ -81,6 +86,7 @@ class Game extends Component {
 
 const mapStateToProps = (state) => ({
   token: state.token,
+  time: state.time.time,
 });
 
 const mapDispatchToProps = (dispatch) => ({

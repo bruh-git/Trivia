@@ -10,6 +10,7 @@ import {
   RECEIVE_QUIZ_FAILURE,
   REQUEST_QUIZ,
   USER_LOGIN_DATA,
+  EXPIRED_TIME,
 } from './actionTypes';
 
 export const requestToken = () => ({
@@ -50,6 +51,8 @@ export const userLoginData = (name, email) => ({
   email,
   name,
 });
+
+export const expiredTimeAction = () => ({ type: EXPIRED_TIME });
 
 const { token } = store.getState();
 const URL_TOKEN = 'https://opentdb.com/api_token.php?command=request';
