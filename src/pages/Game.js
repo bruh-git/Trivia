@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import he from 'he';
 import Header from '../components/Header';
 import { fetchQuizThunk, renewToken } from '../redux/actions';
 import fetchAPI from '../services/fetchApi';
@@ -66,7 +67,7 @@ class Game extends Component {
           key={ id }
           onClick={ this.handleClick }
         >
-          {answer}
+          { he.decode(answer) }
         </button>
       ));
   }
@@ -83,7 +84,7 @@ class Game extends Component {
           && (
             <div>
               <p data-testid="question-category">{currentQuestion.category}</p>
-              <h3 data-testid="question-text">{currentQuestion.question}</h3>
+              <h3 data-testid="question-text">{he.decode(currentQuestion.question)}</h3>
               <ul data-testid="answer-options">
                 <Time />
                 { this.renderAnswers() }
