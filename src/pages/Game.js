@@ -31,6 +31,17 @@ class Game extends Component {
     } else { this.setState({ results: getQuiz.results }); }
   }
 
+  handleClick = ({ target }) => {
+    const correctAnswer = 'correct-answer';
+    const incorrectAnswer = 'incorrect-answer';
+    const answerList = target.parentNode.childNodes;
+    answerList.forEach((answer) => {
+      if (answer.dataset.testid === correctAnswer) {
+        answer.className = correctAnswer;
+      } else { answer.className = incorrectAnswer; }
+    });
+  }
+
   renderAnswers = () => {
     const { index, results } = this.state;
     const { time } = this.props;
@@ -53,6 +64,7 @@ class Game extends Component {
           type="button"
           disabled={ time }
           key={ id }
+          onClick={ this.handleClick }
         >
           {answer}
         </button>
