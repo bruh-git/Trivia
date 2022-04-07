@@ -15,6 +15,11 @@ class Login extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { dispatchRequestToken } = this.props;
+    dispatchRequestToken();
+  }
+
   validate = () => {
     const { email, name } = this.state;
     const emailFormat = /\S+@\S+\.\S+/;
@@ -33,8 +38,7 @@ class Login extends React.Component {
 
   handleClick = () => {
     const { name, email } = this.state;
-    const { dispatchRequestToken, saveUserData } = this.props;
-    dispatchRequestToken();
+    const { saveUserData } = this.props;
     saveUserData(name, email);
   }
 

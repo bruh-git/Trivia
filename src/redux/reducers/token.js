@@ -1,6 +1,6 @@
 // Iniciando a branch da tela de jogo
 import { RECEIVE_TOKEN_FAILURE, RECEIVE_TOKEN_SUCCESS,
-  REQUEST_TOKEN } from '../actions/actionTypes';
+  REQUEST_TOKEN, RENEW_TOKEN } from '../actions/actionTypes';
 
 const INITIAL_STATE = '';
 
@@ -12,6 +12,8 @@ const token = (state = INITIAL_STATE, action) => {
     return (action.token);
   case RECEIVE_TOKEN_FAILURE:
     return (action.error);
+  case RENEW_TOKEN:
+    return (action.token);
   default:
     return state;
   }

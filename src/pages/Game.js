@@ -2,48 +2,68 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import { fetchQuizThunk } from '../redux/actions';
-import Question from '../components/Question';
+import { fetchQuizThunk, renewToken } from '../redux/actions';
+import fetchAPI from '../services/fetchApi';
 
 class Game extends Component {
   constructor() {
     super();
 
     this.state = {
-      index: 1,
+      index: 0,
+      results: [],
     };
   }
 
   async componentDidMount() {
-    const { dispatchRequestQuiz } = this.props;
-    dispatchRequestQuiz();
-  }
-
-  renderQuestion = () => {
-    const { index } = this.state;
-    const { results } = this.props;
-    // const answers = [...results[0].incorrect_answers, results[0].correct_answer];
-    return (
-      <div>
-        <Question questionObject={ results[index] } />
-      </div>
-    );
+    const { token, setNewToken } = this.props;
+    const URL_QUIZ = `https://opentdb.com/api.php?amount=5&token=${token}`;
+    const getQuiz = await fetchAPI(URL_QUIZ);
+    const expiredResponseCode = 3;
+    if (getQuiz.response_code === expiredResponseCode) {
+      const RENEW_URL = 'https://opentdb.com/api_token.php?command=request';
+      const newToken = await fetchAPI(RENEW_URL);
+      setNewToken(newToken);
+      const NEW_QUIZ_URL = `https://opentdb.com/api.php?amount=5&token=${newToken.token}`;
+      const newRequestQuiz = await fetchAPI(NEW_QUIZ_URL);
+      this.setState({ results: newRequestQuiz.results });
+    } else { this.setState({ results: getQuiz.results }); }
   }
 
   render() {
-    const { token, results } = this.props;
+    const { index, results } = this.state;
+    const currentQuestion = results[index];
 
     return (
-      // data-testid="question-category"
-      // data-testid="question-text"
-      // data-testid="correct-answer"
-      // data-testid="wrong-answer-${index}"
-      // data-testid="answer-options"
       <>
         <div><Header /></div>
-        { token && results
-          ? this.renderQuestion()
-          : <p>Token está perdido por aí...</p>}
+        {
+          results.length !== 0
+          && (
+            <div>
+              <p data-testid="question-category">{currentQuestion.category}</p>
+              <h3 data-testid="question-text">{currentQuestion.question}</h3>
+              <ul data-testid="answer-options">
+                <button
+                  type="button"
+                  data-testid="correct-answer"
+                >
+                  {currentQuestion.correct_answer}
+                </button>
+                {
+                  currentQuestion.incorrect_answers
+                    .map((answer, id) => (
+                      <button
+                        type="button"
+                        data-testid="wrong-answer"
+                        key={ id }
+                      >
+                        {answer}
+                      </button>))
+                }
+              </ul>
+            </div>)
+        }
       </>
     );
   }
@@ -51,10 +71,10 @@ class Game extends Component {
 
 const mapStateToProps = (state) => ({
   token: state.token,
-  results: state.questions.results,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  setNewToken: (token) => dispatch(renewToken(token)),
   dispatchRequestQuiz: () => dispatch(fetchQuizThunk()),
 });
 

@@ -5,6 +5,7 @@ import {
   RECEIVE_TOKEN_SUCCESS,
   RECEIVE_TOKEN_FAILURE,
   REQUEST_TOKEN,
+  RENEW_TOKEN,
   RECEIVE_QUIZ_SUCCESS,
   RECEIVE_QUIZ_FAILURE,
   REQUEST_QUIZ,
@@ -23,6 +24,11 @@ export const receiveTokenSuccess = (token) => ({
 export const receiveTokenFailure = (error) => ({
   type: RECEIVE_TOKEN_FAILURE,
   error,
+});
+
+export const renewToken = (token) => ({
+  type: RENEW_TOKEN,
+  token,
 });
 
 export const requestQuiz = () => ({
