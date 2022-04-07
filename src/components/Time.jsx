@@ -11,16 +11,16 @@ class Time extends React.Component {
 
   render() {
     const { time } = this.state;
-    const { dispatchTime } = this.props;
+    const { dispatchTime, getTimer } = this.props;
     const interval = 1000;
-
     const timeout = setTimeout(() => {
       const newTime = time - 1;
+      getTimer(newTime);
       this.setState({ time: newTime });
     }, interval);
     if (time === 0) {
-      clearTimeout(timeout);
       dispatchTime();
+      clearTimeout(timeout);
     }
 
     return (
@@ -35,6 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 Time.propTypes = {
   dispatchTime: PropTypes.func.isRequired,
+  getTimer: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(Time);
