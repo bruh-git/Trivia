@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import { Link } from 'react-router-dom';
 
 const MIN_CORRECT_ANSWERS = 3;
 
@@ -26,6 +27,14 @@ class Feedback extends Component {
           {' '}
           perguntas
         </p>
+        <Link to="/">
+          <button
+            data-testid="btn-play-again"
+            type="button"
+          >
+            Play Again
+          </button>
+        </Link>
       </>
     );
   }
