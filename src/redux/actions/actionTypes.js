@@ -27,3 +27,9 @@ export const USER_LOGIN_DATA = 'USER_LOGIN_DATA';
 export const RENEW_TOKEN = 'RENEW_TOKEN';
 
 export const EXPIRED_TIME = 'EXPIRED_TIME';
+
+export const UPDATE_ASSERTIONS = 'UPDATE_ASSERTIONS';
+
+export const UPDATE_SCORE = 'UPDATE_SCORE';
+
+export const RESET_TIME = 'RESET_TIME';

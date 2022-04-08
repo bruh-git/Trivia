@@ -13,7 +13,7 @@ class Feedback extends Component {
       <>
         <Header />
         <p data-testid="feedback-text">
-          { score < MIN_CORRECT_ANSWERS ? 'Could be better...' : 'Well Done!' }
+          { assertions < MIN_CORRECT_ANSWERS ? 'Could be better...' : 'Well Done!' }
         </p>
         <p>
           O seu placar final é de
