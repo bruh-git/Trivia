@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Time from '../components/Time';
-import { fetchQuizThunk, renewToken, updateScore } from '../redux/actions';
+import { fetchQuizThunk, renewToken, updateScore, resetTime } from '../redux/actions';
 import fetchAPI from '../services/fetchApi';
 
 class Game extends Component {
@@ -40,7 +40,7 @@ class Game extends Component {
 
   handleClick = ({ target }) => {
     const { dispatchUpdateScore } = this.props;
-    const { responseTime } = this.state;
+    const { responseTime, timer } = this.state;
     const correctAnswer = 'correct-answer';
     const incorrectAnswer = 'incorrect-answer';
     const answerList = target.parentNode.childNodes;
@@ -55,6 +55,7 @@ class Game extends Component {
       dispatchUpdateScore((scoring.base + (responseTime * scoring[difficulty])));
     }
     this.setState({ clicked: true });
+    this.getTimer(timer);
   }
 
   renderAnswers = () => {
@@ -70,17 +71,23 @@ class Game extends Component {
     shuffledAnwers
       .splice(Math.floor(Math.random() * answerLength), 0, correctAnswer);
     this.setState({ answers: shuffledAnwers, correctAnswer });
+    console.log('renderAnswer', index);
   }
 
   nextAnswer = () => {
     const { index } = this.state;
+    const { dispatchResetTime } = this.props;
+    console.log('nextAnswer', index);
     const { history } = this.props;
-    const idx = 4;
-    if (index === idx) {
+    const finalIndex = 4;
+    if (index === finalIndex) {
       history.push('/feedback');
     } else {
-      this.setState({ index: index + 1, timer: 30, clicked: false });
-      this.renderAnswers();
+      this.setState({
+        index: index + 1,
+        timer: 30,
+        clicked: false }, () => this.renderAnswers());
+      dispatchResetTime();
     }
   }
 
@@ -98,10 +105,7 @@ class Game extends Component {
   setNewTimer = () => {
     const { timer } = this.state;
     const newTime = timer - 1;
-    const interval = 500;
-    setTimeout(() => {
-      this.setState({ timer: newTime });
-    }, interval);
+    this.setState({ timer: newTime });
   }
 
   render() {
@@ -146,7 +150,7 @@ class Game extends Component {
           )
         }
         {
-          clicked ? this.renderButtonNext() : ''
+          clicked || (timer === 0) ? this.renderButtonNext() : ''
         }
       </>
     );
@@ -162,6 +166,7 @@ const mapDispatchToProps = (dispatch) => ({
   setNewToken: (token) => dispatch(renewToken(token)),
   dispatchRequestQuiz: () => dispatch(fetchQuizThunk()),
   dispatchUpdateScore: (score) => dispatch(updateScore(score)),
+  dispatchResetTime: () => dispatch(resetTime()),
 });
 
 Game.propTypes = {

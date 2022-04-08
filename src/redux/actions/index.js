@@ -12,6 +12,7 @@ import {
   USER_LOGIN_DATA,
   EXPIRED_TIME,
   UPDATE_SCORE,
+  RESET_TIME,
 } from './actionTypes';
 
 export const requestToken = () => ({
@@ -56,6 +57,8 @@ export const userLoginData = (name, email) => ({
 export const expiredTimeAction = () => ({ type: EXPIRED_TIME });
 
 export const updateScore = (score) => ({ type: UPDATE_SCORE, score });
+
+export const resetTime = () => ({ type: RESET_TIME });
 
 const { token } = store.getState();
 const URL_TOKEN = 'https://opentdb.com/api_token.php?command=request';
