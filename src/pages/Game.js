@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import Time from '../components/Time';
 import { fetchQuizThunk, renewToken, updateScore } from '../redux/actions';
 import fetchAPI from '../services/fetchApi';
-import Time from '../components/Time';
 
 class Game extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class Game extends Component {
       results: [],
       responseTime: 0,
       answers: [],
+      clicked: false,
     };
   }
 
@@ -52,6 +53,7 @@ class Game extends Component {
     if (target.dataset.testid === correctAnswer) {
       dispatchUpdateScore((scoring.base + (responseTime * scoring[difficulty])));
     }
+    this.setState({ clicked: true });
   }
 
   renderAnswers = () => {
@@ -70,7 +72,7 @@ class Game extends Component {
   }
 
   render() {
-    const { index, results, answers, correctAnswer } = this.state;
+    const { index, results, answers, correctAnswer, clicked } = this.state;
     const { time } = this.props;
     const currentQuestion = results[index];
 
@@ -106,6 +108,7 @@ class Game extends Component {
             </div>
           )
         }
+        { clicked ? <button data-testid="btn-next" type="button">Next</button> : ''}
       </>
     );
   }
