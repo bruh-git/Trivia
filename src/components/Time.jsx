@@ -1,30 +1,24 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
 import { expiredTimeAction } from '../redux/actions';
 
 class Time extends React.Component {
-  constructor() {
-    super();
-    this.state = { time: 30 };
-  }
-
   render() {
-    const { time } = this.state;
-    const { dispatchTime, getTimer } = this.props;
-    const interval = 1000;
-    const timeout = setTimeout(() => {
-      const newTime = time - 1;
-      getTimer(newTime);
-      this.setState({ time: newTime });
+    const { dispatchTime, timer, getTimer, setNewTimer } = this.props;
+    const interval = 500;
+
+    setTimeout(() => {
+      getTimer(timer);
+      setNewTimer();
     }, interval);
-    if (time === 0) {
+
+    if (timer === 0) {
       dispatchTime();
-      clearTimeout(timeout);
     }
 
     return (
-      <p>{ time }</p>
+      <p>{ timer }</p>
     );
   }
 }
@@ -36,6 +30,8 @@ const mapDispatchToProps = (dispatch) => ({
 Time.propTypes = {
   dispatchTime: PropTypes.func.isRequired,
   getTimer: PropTypes.func.isRequired,
+  setNewTimer: PropTypes.func.isRequired,
+  timer: PropTypes.number.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(Time);

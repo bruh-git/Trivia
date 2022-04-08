@@ -16,6 +16,7 @@ class Game extends Component {
       responseTime: 0,
       answers: [],
       clicked: false,
+      timer: 30,
     };
   }
 
@@ -71,8 +72,40 @@ class Game extends Component {
     this.setState({ answers: shuffledAnwers, correctAnswer });
   }
 
+  nextAnswer = () => {
+    const { index } = this.state;
+    const { history } = this.props;
+    const idx = 4;
+    if (index === idx) {
+      history.push('/feedback');
+    } else {
+      this.setState({ index: index + 1, timer: 30, clicked: false });
+      this.renderAnswers();
+    }
+  }
+
+  renderButtonNext = () => (
+    <button
+      data-testid="btn-next"
+      type="button"
+      onClick={ this.nextAnswer }
+    >
+      Next
+
+    </button>
+  )
+
+  setNewTimer = () => {
+    const { timer } = this.state;
+    const newTime = timer - 1;
+    const interval = 500;
+    setTimeout(() => {
+      this.setState({ timer: newTime });
+    }, interval);
+  }
+
   render() {
-    const { index, results, answers, correctAnswer, clicked } = this.state;
+    const { index, results, answers, correctAnswer, clicked, timer } = this.state;
     const { time } = this.props;
     const currentQuestion = results[index];
 
@@ -85,7 +118,11 @@ class Game extends Component {
             <div>
               <p data-testid="question-category">{currentQuestion.category}</p>
               <h3 data-testid="question-text">{currentQuestion.question}</h3>
-              <Time getTimer={ this.getTimer } />
+              <Time
+                getTimer={ this.getTimer }
+                timer={ timer }
+                setNewTimer={ this.setNewTimer }
+              />
               <ul data-testid="answer-options">
                 {
                   answers
@@ -108,7 +145,9 @@ class Game extends Component {
             </div>
           )
         }
-        { clicked ? <button data-testid="btn-next" type="button">Next</button> : ''}
+        {
+          clicked ? this.renderButtonNext() : ''
+        }
       </>
     );
   }
