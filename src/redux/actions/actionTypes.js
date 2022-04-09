@@ -35,3 +35,5 @@ export const UPDATE_SCORE = 'UPDATE_SCORE';
 export const RESET_TIME = 'RESET_TIME';
 
 export const SAVE_GRAVATAR = 'SAVE_GRAVATAR';
+
+export const RESET_STATE = 'RESET_STATE';

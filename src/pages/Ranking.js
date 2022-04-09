@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { resetState } from '../redux/actions';
+import store from '../redux/store';
 
 class Ranking extends Component {
   constructor(props) {
@@ -12,12 +14,14 @@ class Ranking extends Component {
 
   componentDidMount() {
     const players = JSON.parse(localStorage.getItem('ranking'));
-    // const orderPlayers = players.sort((a, b) => (b.score - a.score));
-    this.setState({ players });
+    const orderPlayers = players.sort((a, b) => (b.score - a.score));
+    this.setState({ players: orderPlayers });
   }
 
   render() {
     const { players } = this.state;
+    const { dispatch } = store;
+
     return (
       <div>
         <div data-testid="ranking-title">Ranking</div>
@@ -28,12 +32,12 @@ class Ranking extends Component {
             <p data-testid={ `player-name-${index}` }>{player.name}</p>
             <p data-testid={ `player-score-${index}` }>{player.score}</p>
           </div>
-        )).sort((a, b) => (a.score === b.score ? a.name - b.name
-          : b.score - a.score))}
+        ))}
         <Link to="/">
           <button
             data-testid="btn-go-home"
             type="button"
+            onClick={ () => dispatch(resetState()) }
           >
             início
           </button>
@@ -49,4 +53,4 @@ const mapStateToProps = (state) => ({
   name: state.player.name,
 });
 
-export default connect(mapStateToProps, null)(Ranking);
+export default connect(mapStateToProps)(Ranking);

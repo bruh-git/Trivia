@@ -2,7 +2,9 @@ import {
   USER_LOGIN_DATA,
   UPDATE_ASSERTIONS,
   UPDATE_SCORE,
-  SAVE_GRAVATAR } from '../actions/actionTypes';
+  SAVE_GRAVATAR,
+  RESET_STATE,
+} from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   name: '',
@@ -34,6 +36,15 @@ const player = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       picture: action.picture,
+    };
+  case RESET_STATE:
+    return {
+      ...state,
+      name: '',
+      assertions: 0,
+      score: 0,
+      gravatarEmail: '',
+      picture: '',
     };
   default:
     return state;

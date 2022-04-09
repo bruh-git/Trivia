@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import { resetState } from '../redux/actions';
 
 const MIN_CORRECT_ANSWERS = 3;
 
@@ -16,7 +17,7 @@ class Feedback extends Component {
   }
 
   render() {
-    const { assertions, score } = this.props;
+    const { assertions, score, dispatchResetState } = this.props;
     return (
       <>
         <Header />
@@ -39,6 +40,7 @@ class Feedback extends Component {
           <button
             data-testid="btn-play-again"
             type="button"
+            onClick={ dispatchResetState }
           >
             Play Again
           </button>
@@ -63,9 +65,13 @@ const mapStateToProps = (state) => ({
   picture: state.player.picture,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  dispatchResetState: () => dispatch(resetState()),
+});
+
 Feedback.propTypes = {
   assertions: PropTypes.number,
   score: PropTypes.number,
 }.isRequired;
 
-export default connect(mapStateToProps)(Feedback);
+export default connect(mapStateToProps, mapDispatchToProps)(Feedback);
