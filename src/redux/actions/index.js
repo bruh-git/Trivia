@@ -14,6 +14,7 @@ import {
   UPDATE_ASSERTIONS,
   UPDATE_SCORE,
   RESET_TIME,
+  SAVE_GRAVATAR,
 } from './actionTypes';
 
 export const requestToken = () => ({
@@ -47,6 +48,11 @@ export const receiveQuizSuccess = (quiz) => ({
 export const receiveQuizFailure = (error) => ({
   type: RECEIVE_QUIZ_FAILURE,
   error,
+});
+
+export const saveGravatar = (picture) => ({
+  type: SAVE_GRAVATAR,
+  picture,
 });
 
 export const userLoginData = (name, email) => ({

@@ -33,3 +33,5 @@ export const UPDATE_ASSERTIONS = 'UPDATE_ASSERTIONS';
 export const UPDATE_SCORE = 'UPDATE_SCORE';
 
 export const RESET_TIME = 'RESET_TIME';
+
+export const SAVE_GRAVATAR = 'SAVE_GRAVATAR';

@@ -1,4 +1,8 @@
-import { USER_LOGIN_DATA, UPDATE_ASSERTIONS, UPDATE_SCORE } from '../actions/actionTypes';
+import {
+  USER_LOGIN_DATA,
+  UPDATE_ASSERTIONS,
+  UPDATE_SCORE,
+  SAVE_GRAVATAR } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   name: '',
@@ -25,6 +29,11 @@ const player = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       score: state.score + action.score,
+    };
+  case SAVE_GRAVATAR:
+    return {
+      ...state,
+      picture: action.picture,
     };
   default:
     return state;
