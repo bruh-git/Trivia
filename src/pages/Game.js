@@ -120,8 +120,12 @@ class Game extends Component {
 
   setNewTimer = () => {
     const { timer } = this.state;
-    const newTime = timer - 1;
-    this.setState({ timer: newTime });
+    if (timer === 0) {
+      this.setState({ timer: 0 });
+    } else {
+      const newTime = timer - 1;
+      this.setState({ timer: newTime });
+    }
   }
 
   render() {
@@ -142,6 +146,7 @@ class Game extends Component {
                 getTimer={ this.getTimer }
                 timer={ timer }
                 setNewTimer={ this.setNewTimer }
+                clicked={ clicked }
               />
               <ul data-testid="answer-options">
                 {

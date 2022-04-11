@@ -10,8 +10,8 @@ class Time extends React.Component {
     this.timer = setInterval(setNewTimer, ONE_SEC);
   }
 
-  componentWillUnmount() {
-    clearInterval(this.timer);
+  componentDidUpdate() {
+    const { timer } = this.props;
   }
 
   render() {
