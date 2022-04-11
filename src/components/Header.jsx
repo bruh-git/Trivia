@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { saveGravatar } from '../redux/actions';
+import './Header.css';
 
 class Header extends Component {
   componentDidMount() {

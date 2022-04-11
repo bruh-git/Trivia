@@ -1,0 +1,29 @@
+.header {
+  background-color: #c4c4c4;
+  display: flex;
+  font-size: 18px;
+  justify-content: space-between;
+  margin-right: 20px;
+  width: 100vw;
+}
+
+.score-container {
+  margin-right: 10px;
+}
+
+.data-player-container {
+  align-items: center;
+  display: flex;
+}
+
+.data-player-container img {
+  border-radius: 100%;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 40px;
+}
+
+span {
+  font-weight: 600;
+}
