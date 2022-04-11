@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { saveGravatar } from '../redux/actions';
+import './Header.css';
 
 class Header extends Component {
   componentDidMount() {
@@ -15,14 +16,24 @@ class Header extends Component {
     const { name, score, picture } = this.props;
 
     return (
-      <div className="header-component">
-        <img
-          data-testid="header-profile-picture"
-          src={ picture }
-          alt="Avatar do usuário"
-        />
-        <h3 data-testid="header-player-name">{ name }</h3>
-        <span data-testid="header-score">{ score }</span>
+      <div className="header">
+        <div className="data-player-container">
+          <img
+            data-testid="header-profile-picture"
+            src={ picture }
+            alt="Avatar do usuário"
+          />
+          <p>
+            Jogador:
+            {' '}
+            <span data-testid="header-player-name">{ name }</span>
+          </p>
+        </div>
+        <p className="score-container">
+          Pontos:
+          {' '}
+          <span data-testid="header-score">{ score }</span>
+        </p>
       </div>
     );
   }
