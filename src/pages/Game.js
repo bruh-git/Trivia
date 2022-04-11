@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './Game.css';
 import he from 'he';
 import Header from '../components/Header';
 import Time from '../components/Time';
@@ -109,6 +110,7 @@ class Game extends Component {
 
   renderButtonNext = () => (
     <button
+      className="next-btn"
       data-testid="btn-next"
       type="button"
       onClick={ this.nextAnswer }
@@ -139,7 +141,7 @@ class Game extends Component {
         {
           results.length !== 0
           && (
-            <div>
+            <div className="game-container">
               <p data-testid="question-category">{currentQuestion.category}</p>
               <h3 data-testid="question-text">{he.decode(currentQuestion.question)}</h3>
               <Time

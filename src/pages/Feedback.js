@@ -21,23 +21,26 @@ class Feedback extends Component {
     return (
       <>
         <Header />
-        <p data-testid="feedback-text">
-          { assertions < MIN_CORRECT_ANSWERS ? 'Could be better...' : 'Well Done!' }
-        </p>
-        <p>
-          O seu placar final é de
-          {' '}
-          <strong data-testid="feedback-total-score">{score}</strong>
-        </p>
-        <p>
-          Você acertou
-          {' '}
-          <strong data-testid="feedback-total-question">{assertions}</strong>
-          {' '}
-          perguntas
-        </p>
+        <span className="feedback-box">
+          <p data-testid="feedback-text">
+            { assertions < MIN_CORRECT_ANSWERS ? 'Could be better...' : 'Well Done!' }
+          </p>
+          <p>
+            O seu placar final é de
+            {' '}
+            <strong data-testid="feedback-total-score">{score}</strong>
+          </p>
+          <p>
+            Você acertou
+            {' '}
+            <strong data-testid="feedback-total-question">{assertions}</strong>
+            {' '}
+            perguntas
+          </p>
+        </span>
         <Link to="/">
           <button
+            className="btn-play-again"
             data-testid="btn-play-again"
             type="button"
             onClick={ dispatchResetState }
@@ -47,6 +50,7 @@ class Feedback extends Component {
         </Link>
         <Link to="/ranking">
           <button
+            className="btn-ranking"
             data-testid="btn-ranking"
             type="button"
           >

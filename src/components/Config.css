@@ -1,3 +1,10 @@
 .config-container {
+  background: #e6e6e6;
   display: flex;
+  width: 90vw;
+}
+
+.config-btn {
+  background-color: #C4C4C4;
+
 }

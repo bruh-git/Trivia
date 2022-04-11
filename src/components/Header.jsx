@@ -15,7 +15,7 @@ class Header extends Component {
     const { name, score, picture } = this.props;
 
     return (
-      <div>
+      <div className="header-component">
         <img
           data-testid="header-profile-picture"
           src={ picture }

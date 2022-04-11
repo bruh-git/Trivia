@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import categories from '../data';
 import { saveConfig } from '../redux/actions';
+import './Config.css';
 
 class Config extends Component {
   constructor(props) {
@@ -132,8 +133,20 @@ class Config extends Component {
             </select>
           </label>
         </fieldset>
-        <button type="button" onClick={ this.saveConfig }>Save</button>
-        <button type="button" onClick={ this.resetConfig }>Default configuration</button>
+        <button
+          className="config-btn"
+          type="button"
+          onClick={ this.saveConfig }
+        >
+          Save
+        </button>
+        <button
+          className="config-btn"
+          type="button"
+          onClick={ this.resetConfig }
+        >
+          Default configuration
+        </button>
       </form>
     );
   }
