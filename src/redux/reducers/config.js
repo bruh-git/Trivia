@@ -7,7 +7,7 @@ const config = (state = INITIAL_STATE, action) => {
   case SAVE_CONFIG:
     return action.config;
   case RESET_STATE:
-    return {};
+    return { amount: 5 };
   default:
     return state;
   }
