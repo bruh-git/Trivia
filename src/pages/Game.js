@@ -142,7 +142,12 @@ class Game extends Component {
           results.length !== 0
           && (
             <div className="game-container">
-              <p data-testid="question-category">{currentQuestion.category}</p>
+              <p
+                data-testid="question-category"
+                className="question-category"
+              >
+                {currentQuestion.category}
+              </p>
               <h3 data-testid="question-text">{he.decode(currentQuestion.question)}</h3>
               <Time
                 getTimer={ this.getTimer }

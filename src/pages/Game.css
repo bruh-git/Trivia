@@ -4,18 +4,25 @@
 
 .game-container {
   align-items: center;
-  border: 1px solid gray;
+  border: 1px solid rgb(100, 95, 95);
   border-radius: 10px;
   display: flex;
   flex-flow: column nowrap;
-  margin: 20px 50vh 10px;
+  margin: 30px 50vh 10px;
   padding: 30px 0 45px;
 }
 
-.game-container h3 {
-  background-color: rgb(180, 180, 158);
+.question-category {
+  color: rgba(0, 0, 0, 0.726);
   display: flex;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.game-container h3 {
+  color: rgba(0, 0, 0, 0.842);
+  display: flex;
+  font-size: 1.4rem;
   margin: 20px;
 }
 
@@ -53,8 +60,18 @@ ul button:hover {
   border-radius: 10px;
   color: rgb(240, 225, 209);
   display: flex;
+  font-size: 1.4rem;
+  font-weight: 600;
   justify-content: center;
   margin: 15px auto 0;
-  padding: 10px 0;
+  padding: 15px 0;
   width: 150px;
+}
+
+.next-btn:hover {
+  background-color: rgb(245, 240, 235);
+  border: 5px groove rgb(53, 90, 90);
+  color: darkslategray;
+  font-weight: 600;
+  transition: 500ms;
 }

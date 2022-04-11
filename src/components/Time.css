@@ -1,0 +1,14 @@
+* {
+  font-family: Roboto , sans-serif;
+}
+
+.timer {
+  background-color: rgba(89, 90, 70, 0.733);
+  border-radius: 50%;
+  color: #ebe8e8f1;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 10px 0 30px;
+  padding: 17px 24px;
+}

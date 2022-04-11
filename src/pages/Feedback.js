@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { resetState } from '../redux/actions';
+import './Feedback.css';
 
 const MIN_CORRECT_ANSWERS = 3;
 

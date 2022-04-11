@@ -1,14 +1,16 @@
 .feedback-page {
-  position: absolute;
-  width: 792px;
-  height: 474px;
+  display: flex;
+  flex-direction: column;
   background: #FFFFFF;
 }
 
 .feedback-box {
-  position: absolute;
+  display: flex;
+  flex-direction: column;
   width: 396px;
-  height: 188px;
+  margin: 100px auto 30px;
+  gap: 20px;
+  align-items: center;
   font-style: Roboto;
   font-style: normal;
   font-weight: 400;
@@ -19,15 +21,28 @@
 }
 
 .btn-play-again {
-  position: absolute;
-  width: 374px;
-  height: 70px;
-  background: #F0F0F0;
+  align-items: center;
+  border-radius: 10px;
+  background-color: lightgreen;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  flex-flow: column wrap;
+  font-size: 1.2rem;
+  min-width: 275px;
+  padding: 10px 0;
+  margin: 30px auto 20px;
 }
 
 .btn-ranking {
-  position: absolute;
-  width: 374px;
-  height: 70px;
-  background: #F0F0F0;
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 600;
+  flex-flow: column wrap;
+  font-size: 1.2rem;
+  min-width: 275px;
+  padding: 10px 0;
+  margin: 30px auto;
 }

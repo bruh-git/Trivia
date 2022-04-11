@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { expiredTimeAction } from '../redux/actions';
+import './Time.css';
 
 class Time extends React.Component {
   componentDidMount() {
@@ -18,7 +19,7 @@ class Time extends React.Component {
     }
 
     return (
-      <p>{ timer }</p>
+      <p className="timer">{ timer }</p>
     );
   }
 }
