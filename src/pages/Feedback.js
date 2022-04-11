@@ -19,7 +19,7 @@ class Feedback extends Component {
   render() {
     const { assertions, score, dispatchResetState } = this.props;
     return (
-      <>
+      <div className="feedback-page">
         <Header />
         <span className="feedback-box">
           <p data-testid="feedback-text">
@@ -57,7 +57,7 @@ class Feedback extends Component {
             Ranking
           </button>
         </Link>
-      </>
+      </div>
     );
   }
 }
