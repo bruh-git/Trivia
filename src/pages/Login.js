@@ -1,4 +1,5 @@
 import React from 'react';
+import './Login.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -58,47 +59,53 @@ class Login extends React.Component {
               </p>
             </header>
           </div>
-          <label htmlFor="name">
-            Nome:
-            {' '}
-          </label>
-          <input
-            data-testid="input-player-name"
-            id="name"
-            name="name"
-            onChange={ this.handleChange }
-            type="text"
-            value={ name }
-          />
-          <label htmlFor="email">
-            E-mail:
-            {' '}
-          </label>
-          <input
-            data-testid="input-gravatar-email"
-            id="email"
-            name="email"
-            onChange={ this.handleChange }
-            type="email"
-            value={ email }
-          />
-          <Link to="/game">
+          <div className="game-form">
+            <label htmlFor="name">
+              Nome:
+              {' '}
+            </label>
+            <input
+              className="input"
+              data-testid="input-player-name"
+              id="name"
+              name="name"
+              placeholder="nome"
+              onChange={ this.handleChange }
+              type="text"
+              value={ name }
+            />
+            <label htmlFor="email">
+              E-mail:
+              {' '}
+            </label>
+            <input
+              className="input"
+              data-testid="input-gravatar-email"
+              id="email"
+              name="email"
+              placeholder="email"
+              onChange={ this.handleChange }
+              type="email"
+              value={ email }
+            />
+            <Link to="/game">
+              <button
+                data-testid="btn-play"
+                disabled={ isDisabled }
+                onClick={ this.handleClick }
+                type="button"
+              >
+                Play
+              </button>
+            </Link>
             <button
-              data-testid="btn-play"
-              disabled={ isDisabled }
-              onClick={ this.handleClick }
+              data-testid="btn-settings"
+              onClick={ () => this.setState({ openConfig: !openConfig }) }
               type="button"
             >
-              Play
+              Config
             </button>
-          </Link>
-          <button
-            data-testid="btn-settings"
-            onClick={ () => this.setState({ openConfig: !openConfig }) }
-            type="button"
-          >
-            Config
-          </button>
+          </div>
         </div>
         <div>{ openConfig && <Config /> }</div>
       </>

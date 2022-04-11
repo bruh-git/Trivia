@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.game-form {
+  align-items: center;
+  display: flex;
+
+}
+
+.input {
+  background: #e6e6e6;
+  border-radius: 25px;
+  color: #666;
+  font-size: 15px;
+  height: 20px;
+  line-height: 1.5;
+  padding: 0 30px 0 50px;
+  width: 10%;
+}
