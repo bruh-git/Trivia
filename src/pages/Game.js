@@ -137,7 +137,7 @@ class Game extends Component {
 
     return (
       <>
-        <div><Header /></div>
+        <Header />
         {
           results.length !== 0
           && (
