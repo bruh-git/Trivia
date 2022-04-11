@@ -1,16 +1,15 @@
 .header {
-  align-items: center;
   background-color: #c4c4c4;
   display: flex;
   font-size: 18px;
-  height: 60px;
   justify-content: space-between;
   margin-right: 20px;
+  height: 200px;
   width: 100%;
 }
 
 .score-container {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .data-player-container {
