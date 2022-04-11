@@ -1,7 +1,31 @@
+* {
+  font-family: Roboto , sans-serif;
+}
+
 .game-container {
   align-items: center;
   display: flex;
   flex-flow: column nowrap;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+ul button {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: 1.2rem;
+  min-width: 250px;
+  padding: 10px 0;
+}
+
+ul button:hover {
+  background-color: rgb(218, 206, 192);
+  border: 3px groove rgba(128, 128, 128, 0.733);
 }
 
 .correct-answer {
@@ -14,5 +38,7 @@
 
 .next-btn {
   display: flex;
+  justify-content: center;
+  margin: 15px auto 0;
   width: 150px;
 }
