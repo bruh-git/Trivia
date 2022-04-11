@@ -37,3 +37,5 @@ export const RESET_TIME = 'RESET_TIME';
 export const SAVE_GRAVATAR = 'SAVE_GRAVATAR';
 
 export const RESET_STATE = 'RESET_STATE';
+
+export const SAVE_CONFIG = 'SAVE_CONFIG';

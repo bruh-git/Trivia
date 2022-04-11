@@ -31,8 +31,12 @@ class Game extends Component {
   }
 
   async componentDidMount() {
-    const { token, setNewToken } = this.props;
-    const URL_QUIZ = `https://opentdb.com/api.php?amount=5&token=${token}`;
+    const { token, setNewToken, config } = this.props;
+    let URL_QUIZ = `https://opentdb.com/api.php?token=${token}`;
+    const filterConfig = Object.entries(config)
+      .filter((param) => param[1] !== '');
+    filterConfig.forEach((param) => { URL_QUIZ += `&${param[0]}=${param[1]}`; });
+    console.log(URL_QUIZ);
     const getQuiz = await fetchAPI(URL_QUIZ);
     const expiredResponseCode = 3;
     if (getQuiz.response_code === expiredResponseCode) {
@@ -173,6 +177,7 @@ class Game extends Component {
 const mapStateToProps = (state) => ({
   token: state.token,
   time: state.time.time,
+  config: state.config,
 });
 
 const mapDispatchToProps = (dispatch) => ({

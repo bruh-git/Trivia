@@ -16,6 +16,7 @@ import {
   RESET_TIME,
   SAVE_GRAVATAR,
   RESET_STATE,
+  SAVE_CONFIG,
 } from './actionTypes';
 
 export const requestToken = () => ({
@@ -71,6 +72,8 @@ export const updateScore = (score) => ({ type: UPDATE_SCORE, score });
 export const resetTime = () => ({ type: RESET_TIME });
 
 export const resetState = () => ({ type: RESET_STATE });
+
+export const saveConfig = (config) => ({ type: SAVE_CONFIG, config });
 
 const { token } = store.getState();
 const URL_TOKEN = 'https://opentdb.com/api_token.php?command=request';

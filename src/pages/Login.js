@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import logo from '../trivia.png';
 import { fetchTokenThunk, userLoginData } from '../redux/actions';
+import Config from '../components/Config';
 
 class Login extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Login extends React.Component {
       email: '',
       isDisabled: true,
       name: '',
+      openConfig: false,
     };
   }
 
@@ -43,62 +45,63 @@ class Login extends React.Component {
   }
 
   render() {
-    const { email, isDisabled, name } = this.state;
+    const { email, isDisabled, name, openConfig } = this.state;
 
     return (
-      <div>
-        <div className="App">
-          <header className="App-header">
-            <img src={ logo } className="App-logo" alt="logo" />
-            <p>
-              SUA VEZ
-            </p>
-          </header>
-        </div>
-        <label htmlFor="name">
-          Nome:
-          {' '}
-        </label>
-        <input
-          data-testid="input-player-name"
-          id="name"
-          name="name"
-          onChange={ this.handleChange }
-          type="text"
-          value={ name }
-        />
-        <label htmlFor="email">
-          E-mail:
-          {' '}
-        </label>
-        <input
-          data-testid="input-gravatar-email"
-          id="email"
-          name="email"
-          onChange={ this.handleChange }
-          type="email"
-          value={ email }
-        />
-        <Link to="/game">
-          <button
-            data-testid="btn-play"
-            disabled={ isDisabled }
-            onClick={ this.handleClick }
-            type="button"
-          >
-            Play
-          </button>
-        </Link>
-        <Link to="/config">
+      <>
+        <div>
+          <div className="App">
+            <header className="App-header">
+              <img src={ logo } className="App-logo" alt="logo" />
+              <p>
+                SUA VEZ
+              </p>
+            </header>
+          </div>
+          <label htmlFor="name">
+            Nome:
+            {' '}
+          </label>
+          <input
+            data-testid="input-player-name"
+            id="name"
+            name="name"
+            onChange={ this.handleChange }
+            type="text"
+            value={ name }
+          />
+          <label htmlFor="email">
+            E-mail:
+            {' '}
+          </label>
+          <input
+            data-testid="input-gravatar-email"
+            id="email"
+            name="email"
+            onChange={ this.handleChange }
+            type="email"
+            value={ email }
+          />
+          <Link to="/game">
+            <button
+              data-testid="btn-play"
+              disabled={ isDisabled }
+              onClick={ this.handleClick }
+              type="button"
+            >
+              Play
+            </button>
+          </Link>
           <button
             data-testid="btn-settings"
-            onClick={ this.handleClick }
+            onClick={ () => this.setState({ openConfig: !openConfig }) }
             type="button"
           >
             Config
           </button>
-        </Link>
-      </div>
+        </div>
+        <div>{ openConfig && <Config /> }</div>
+      </>
     );
   }
 }

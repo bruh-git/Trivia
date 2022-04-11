@@ -4,7 +4,6 @@ import './App.css';
 import Ranking from './pages/Ranking';
 import Feedback from './pages/Feedback';
 import Game from './pages/Game';
-import Config from './pages/Config';
 import Login from './pages/Login';
 
 class App extends Component {
@@ -15,7 +14,6 @@ class App extends Component {
         <Route path="/game" component={ Game } />
         <Route path="/feedback" component={ Feedback } />
         <Route path="/ranking" component={ Ranking } />
-        <Route path="/config" component={ Config } />
       </Switch>
     );
   }
