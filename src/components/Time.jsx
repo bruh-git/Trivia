@@ -10,10 +10,6 @@ class Time extends React.Component {
     this.timer = setInterval(setNewTimer, ONE_SEC);
   }
 
-  componentDidUpdate() {
-    const { timer } = this.props;
-  }
-
   render() {
     const { dispatchTime, timer } = this.props;
 
