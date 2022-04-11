@@ -92,10 +92,10 @@ class Game extends Component {
     console.log(answerButtons);
     answerButtons.forEach((answer) => answer
       .classList.remove(CORRECT_ANSWER, INCORRECT_ANSWER));
-    const { index } = this.state;
+    const { index, results } = this.state;
     const { dispatchResetTime } = this.props;
     const { history } = this.props;
-    const finalIndex = 4;
+    const finalIndex = results.length - 1;
     if (index === finalIndex) {
       history.push('/feedback');
     } else {
