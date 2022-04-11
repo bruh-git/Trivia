@@ -5,10 +5,18 @@
 .game-container {
   align-items: center;
   border: 1px solid gray;
+  border-radius: 10px;
   display: flex;
   flex-flow: column nowrap;
   margin: 20px 50vh 10px;
   padding: 30px 0 45px;
+}
+
+.game-container h3 {
+  background-color: rgb(180, 180, 158);
+  display: flex;
+  font-size: 1.3rem;
+  margin: 20px;
 }
 
 ul {
@@ -19,15 +27,16 @@ ul {
 
 ul button {
   align-items: center;
+  border-radius: 10px;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column wrap;
   font-size: 1.2rem;
-  min-width: 250px;
+  min-width: 275px;
   padding: 10px 0;
 }
 
 ul button:hover {
-  background-color: rgb(218, 206, 192);
+  background-color: rgb(240, 225, 209);
   border: 3px groove rgba(128, 128, 128, 0.733);
 }
 
@@ -40,8 +49,12 @@ ul button:hover {
 }
 
 .next-btn {
+  background-color: darkslategray;
+  border-radius: 10px;
+  color: rgb(240, 225, 209);
   display: flex;
   justify-content: center;
   margin: 15px auto 0;
+  padding: 10px 0;
   width: 150px;
 }
