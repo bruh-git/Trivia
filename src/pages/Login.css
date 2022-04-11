@@ -4,18 +4,26 @@
   padding: 0;
 }
 
-.game-form {
-  align-items: center;
+.input-form {
+  border-radius: 10px;
   display: flex;
-
+  font-size: 1.2rem;
+  margin: auto;
+  min-width: 275px;
+  padding: 10px;
 }
 
-.input {
-  background: #e6e6e6;
-  border-radius: 25px;
-  color: #666;
-  font-size: 15px;
-  height: 20px;
-  padding: 0 30px 0 50px;
-  width: 10%;
+.btn {
+  background-color: rgb(156, 183, 115);
+  border-radius: 10px;
+  color: black;
+  display: flex;
+  font-size: 1.2rem;
+  margin: auto;
+  min-width: 275px;
+  padding: 10px;
+}
+
+.App {
+  padding: 15px;
 }

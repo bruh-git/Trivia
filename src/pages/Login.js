@@ -51,7 +51,7 @@ class Login extends React.Component {
     return (
       <>
         <div>
-          <div className="App">
+          <div>
             <header className="App-header">
               <img src={ logo } className="App-logo" alt="logo" />
               <p>
@@ -59,13 +59,9 @@ class Login extends React.Component {
               </p>
             </header>
           </div>
-          <div className="game-form">
-            <label htmlFor="name">
-              Nome:
-              {' '}
-            </label>
+          <div className="App">
             <input
-              className="input"
+              className="input-form"
               data-testid="input-player-name"
               id="name"
               name="name"
@@ -74,12 +70,8 @@ class Login extends React.Component {
               type="text"
               value={ name }
             />
-            <label htmlFor="email">
-              E-mail:
-              {' '}
-            </label>
             <input
-              className="input"
+              className="input-form"
               data-testid="input-gravatar-email"
               id="email"
               name="email"
@@ -90,6 +82,7 @@ class Login extends React.Component {
             />
             <Link to="/game">
               <button
+                className="btn"
                 data-testid="btn-play"
                 disabled={ isDisabled }
                 onClick={ this.handleClick }
@@ -99,11 +92,12 @@ class Login extends React.Component {
               </button>
             </Link>
             <button
+              className="btn"
               data-testid="btn-settings"
               onClick={ () => this.setState({ openConfig: !openConfig }) }
               type="button"
             >
-              Config
+              Configuração
             </button>
           </div>
         </div>
