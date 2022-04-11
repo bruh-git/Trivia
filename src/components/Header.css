@@ -2,13 +2,15 @@
   background-color: #c4c4c4;
   display: flex;
   font-size: 18px;
+  height: 60px;
   justify-content: space-between;
+  align-items: center;
   margin-right: 20px;
-  width: 100vw;
+  width: 100%;
 }
 
 .score-container {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .data-player-container {
