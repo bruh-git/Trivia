@@ -67,86 +67,90 @@ class Config extends Component {
           >
             <h2>Configurations</h2>
           </legend>
-          <label htmlFor="questions-range">
-            {' '}
-            <h3>{ `Number of questions: ${questionsRange || '5'}` }</h3>
-            <input
-              name="questionsRange"
-              type="range"
-              list="range-options"
-              value={ questionsRange }
-              min="5"
-              max="50"
-              step="5"
-              onChange={ this.handleChange }
-            />
-          </label>
-          <label htmlFor="categories">
-            <h3>Categories</h3>
-            <select
-              id="categories"
-              name="categoryChosen"
-              value={ categoryChosen }
-              onChange={ this.handleChange }
-            >
-              {
-                categories.map((category, index) => (
-                  <option key={ index } name="categoryChosen" value={ category }>
-                    { category }
-                  </option>
-                ))
-              }
-            </select>
-          </label>
-          <label htmlFor="difficulty">
-            <h3>Difficulty</h3>
-            <select
-              id="difficulty"
-              name="difficultyOption"
-              value={ difficultyOption }
-              onChange={ this.handleChange }
-            >
-              {
-                difficultyList.map((difficulty, index) => (
-                  <option key={ index } name="difficultyOption" value={ difficulty }>
-                    { difficulty }
-                  </option>
-                ))
-              }
-            </select>
-          </label>
-          <label htmlFor="type">
-            <h3>Type of Question</h3>
-            <select
-              id="type"
-              name="typeOption"
-              value={ typeOption }
-              onChange={ this.handleChange }
-            >
-              {
-                typeList.map((type, index) => (
-                  <option key={ index } name="typeOption" value={ type }>
-                    { type }
-                  </option>
-                ))
-              }
-            </select>
-          </label>
+          <div className="inner-container">
+            <label htmlFor="questions-range">
+              {' '}
+              <h3>{`Number of questions: ${questionsRange || '5'}`}</h3>
+              <input
+                name="questionsRange"
+                type="range"
+                list="range-options"
+                value={ questionsRange }
+                min="5"
+                max="50"
+                step="5"
+                onChange={ this.handleChange }
+              />
+            </label>
+            <label htmlFor="categories">
+              <h3>Categories</h3>
+              <select
+                id="categories"
+                name="categoryChosen"
+                value={ categoryChosen }
+                onChange={ this.handleChange }
+              >
+                {
+                  categories.map((category, index) => (
+                    <option key={ index } name="categoryChosen" value={ category }>
+                      {category}
+                    </option>
+                  ))
+                }
+              </select>
+            </label>
+            <label htmlFor="difficulty">
+              <h3>Difficulty</h3>
+              <select
+                id="difficulty"
+                name="difficultyOption"
+                value={ difficultyOption }
+                onChange={ this.handleChange }
+              >
+                {
+                  difficultyList.map((difficulty, index) => (
+                    <option key={ index } name="difficultyOption" value={ difficulty }>
+                      {difficulty}
+                    </option>
+                  ))
+                }
+              </select>
+            </label>
+            <label htmlFor="type">
+              <h3>Type of Question</h3>
+              <select
+                id="type"
+                name="typeOption"
+                value={ typeOption }
+                onChange={ this.handleChange }
+              >
+                {
+                  typeList.map((type, index) => (
+                    <option key={ index } name="typeOption" value={ type }>
+                      {type}
+                    </option>
+                  ))
+                }
+              </select>
+            </label>
+          </div>
         </fieldset>
-        <button
-          className="config-btn"
-          type="button"
-          onClick={ this.saveConfig }
-        >
-          Save
-        </button>
-        <button
-          className="config-btn"
-          type="button"
-          onClick={ this.resetConfig }
-        >
-          Default configuration
-        </button>
+        <div className="btn-container">
+          <button
+            className="config-btn"
+            type="button"
+            onClick={ this.saveConfig }
+          >
+            Save
+          </button>
+          <button
+            className="config-btn"
+            type="button"
+            onClick={ this.resetConfig }
+          >
+            Default configuration
+          </button>
+        </div>
       </form>
     );
   }
