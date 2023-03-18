@@ -1,11 +1,11 @@
-import React from 'react';
-import './Login.css';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import logo from '../trivia.png';
-import { fetchTokenThunk, userLoginData } from '../redux/actions';
 import Config from '../components/Config';
+import { fetchTokenThunk, userLoginData } from '../redux/actions';
+import logo from '../trivia.png';
+import './Login.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -113,8 +113,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Login.propTypes = {
-  dispatchRequestToken: PropTypes.func.isRequired,
   saveUserData: PropTypes.func.isRequired,
+  dispatchRequestToken: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(Login);
